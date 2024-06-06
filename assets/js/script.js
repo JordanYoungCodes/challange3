@@ -1,13 +1,13 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
-
+const employeesArray = []
 
 
 
 
 // Collect employee data                       // TODO: Get user input to create and return an array of employee objects
 const collectEmployees = function() {
-  const employeesArray = []
+  
   let addEmployee = true;
   while(addEmployee){
     let firstName = prompt("enter a first name");
@@ -20,30 +20,38 @@ const collectEmployees = function() {
     }
 employeesArray.push(newEmployee)
     addEmployee = confirm("would you like to add anothe employee");
+
   }
-  console.log(employeesArray)
+//   displayAverageSalary()
  return employeesArray;  
 }
 
 // Display the average salary
 
-const displayAverageSalary = function(employeesArray) {
+const displayAverageSalary = function(employeesArrayParam) {
   // TODO: Calculate and display the average salary
-  // const totalSalary = [salary];
-  // console.log(totalSalary)
-  // let avgSalary = (totalSalary.reduce / (totalSalary.length + 1));
-  // console.log(avgSalary)
-
-  //for (let i = 0; i < (newEmployee.salary.length()) +1; i++)
- //  totalSalary = totalSalary++;
- // console.log(totalSalary)
   
+   
 
+  let totSalary = 0; 
+ 
+
+for (let i = 0; i < employeesArrayParam.length; i++) {
+    console.log(employeesArrayParam[i].salary);
+    totSalary += parseInt(employeesArrayParam[i].salary);
+    
+}
+ console.log(totSalary)      
+let avgSalary = totSalary / employeesArrayParam.length;
+console.log(`the average salary is ${avgSalary}`)
 }
 
-// Select a random employee
+// Select a random employee // TODO: Select and display a random employee
 const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
+   const index = Math.floor(Math.random() * employeesArray.length);
+   const rndEmployeeFN = (employeesArray[index].firstName);
+   const rndEmployeeLN = (employeesArray[index].lastName);
+   console.log(` a random employee is: ${rndEmployeeFN} , ${rndEmployeeLN}`);
 }
 
 /*
