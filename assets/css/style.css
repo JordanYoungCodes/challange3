@@ -35,10 +35,10 @@ h2 {
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 90%);
   border-radius: 5px;
-  border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  border-width: 4px;
+  box-shadow: rgba(3, 3, 3, 0.433) 4px 4px 8px 12px;
   color: hsl(206, 17%, 28%);
   font-size: 18px;
   margin: 0 auto;
@@ -50,7 +50,7 @@ h2 {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: #8ec7ff;
   height: 2px;
 }
 
@@ -116,6 +116,10 @@ button[disabled] {
 }
 
 
+
+.data {
+  margin-top: 60px;
+}
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;

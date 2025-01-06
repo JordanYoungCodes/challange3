@@ -40,20 +40,31 @@ const collectEmployees = function() {
 
 // Calculate the average salary
 const calculateAverageSalary = function(employees) {
-  if (employees.length === 0) return 0;
+  if (!employees || employees.length === 0) return 0; // Handle empty or undefined arrays gracefully
 
-  const totalSalary = employees.reduce((total, employee) => total + employee.salary, 0);
+  const totalSalary = employees.reduce((total, employee) => {
+    const salary = parseFloat(employee.salary) || 0; // Ensure salary is a number, fallback to 0
+    return total + salary;
+  }, 0);
+
   return totalSalary / employees.length;
 };
 
 // Display the average salary
 const displayAverageSalary = function(employees) {
   const avgSalary = calculateAverageSalary(employees);
-  console.log(`The average salary is ${avgSalary.toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD"
-  })}`);
+
+  const salelement = document.getElementById('avg-salary'); // Get the element
+  if (salelement) {
+    salelement.textContent = `The average salary is ${avgSalary.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD"
+    })}`; // Update the content of the element
+  } else {
+    console.error('Element with id "avg-salary" not found.');
+  }
 };
+
 
 // Select and display a random employee
 const getRandomEmployee = function(employees) {
@@ -61,7 +72,12 @@ const getRandomEmployee = function(employees) {
 
   const randomIndex = Math.floor(Math.random() * employees.length);
   const randomEmployee = employees[randomIndex];
-  console.log(`A random employee is: ${randomEmployee.firstName} ${randomEmployee.lastName}`);
+  const randele = document.getElementById('rand-employee');
+  if (randele) {
+    randele.textContent = `A random employee is: ${randomEmployee.firstName} ${randomEmployee.lastName}`
+  } else {
+    console.error('element with id random employee not found')
+  }
 };
 
 // Sort employees by last name
